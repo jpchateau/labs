@@ -11,22 +11,26 @@ class Curl
         self::$endpoint = $endPoint;
     }
 
-    public function postMetric($name, $value, $source)
+    public function postMetric($name, $value)
     {
-        $postvalues = array('name'   => $name,
+        $curl_post_data = array('gauges' => array(array('name'   => $name,
                             'value'  => $value,
-                            'source' => $source);
-        $postfields = http_build_query($postvalues);
+                            )));
 
         $curl = curl_init();
 
+$headers = array(
+    'Content-Type: application/json'
+);
+
         curl_setopt($curl, CURLOPT_URL, self::$endpoint);
-        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_USERPWD, 'contact@jpchateau.com:d5792196b3a31ed77141f4704cf5559c9672fa2926a0af7cdea958c30967e11c');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);    
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
 
-        $data = \curl_exec($curl);
+        $data = curl_exec($curl);
 
         curl_close($curl);
 

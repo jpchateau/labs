@@ -9,8 +9,7 @@ class SiteController extends Controller
     public function homeAction()
     {
         $curl = $this->get('curl');
-        $curl->postMetric('home', 1, $this->get('router')->generate('jp_librato_home'));
-        var_dump($data);
+        $data = $curl->postMetric('home', '1');
 
         return $this->render('JPLibratoBundle:Site:home.html.twig', array());
     }
