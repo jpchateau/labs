@@ -27,6 +27,13 @@ class SiteController extends Controller
     {
         $curl = $this->get('curl');
         $curl->postMetric($name, $value);
-        return $this->render('JPLibratoBundle:Site:post.html.twig', array('name' => $name, 'value' => $value));
+        return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'curl', 'name' => $name, 'value' => $value));
+    }
+
+    public function statsdAction($name, $value)
+    {
+        $curl = $this->get('statsd');
+        $curl->postMetric($name, $value);
+        return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'statsd', 'name' => $name, 'value' => $value));
     }
 }

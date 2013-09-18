@@ -2,3 +2,6 @@ services:
     curl:
         class: JP\LibratoBundle\Library\Curl
         arguments: [%librato_endpoint%, %librato_user%, %librato_token%]
+
+    statsd:
+        class: JP\LibratoBundle\Library\StatsD

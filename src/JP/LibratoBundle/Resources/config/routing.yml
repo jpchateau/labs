@@ -13,3 +13,7 @@ jp_librato_order:
 jp_librato_post:
     pattern:  /site/post/{name}/{value}
     defaults: { _controller: JPLibratoBundle:Site:post }
+
+jp_librato_statsd:
+    pattern:  /site/statsd/{name}/{value}
+    defaults: { _controller: JPLibratoBundle:Site:statsd }
