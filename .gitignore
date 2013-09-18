@@ -1,7 +1,5 @@
 .settings
-.buildpath
 .project
-.git
 /vendor/*
 /web/bundles/*
 /app/cache/*
