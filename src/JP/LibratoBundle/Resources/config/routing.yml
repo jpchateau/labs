@@ -1,0 +1,11 @@
+jp_librato_home:
+    pattern:  /site/home
+    defaults: { _controller: JPLibratoBundle:Site:home }
+
+jp_librato_cart:
+    pattern:  /site/cart
+    defaults: { _controller: JPLibratoBundle:Site:cart }
+
+jp_librato_order:
+    pattern:  /site/order
+    defaults: { _controller: JPLibratoBundle:Site:order }

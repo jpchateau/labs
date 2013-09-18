@@ -1,0 +1,4 @@
+services:
+    curl:
+        class: JP\LibratoBundle\Library\Curl
+        arguments: [%curl_endpoint%]

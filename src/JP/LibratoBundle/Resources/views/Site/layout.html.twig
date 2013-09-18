@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>JP-Librato</title>
+</head>
+
+<style type="text/css">
+#menu {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+</style>
+
+<body>
+
+<div id="menu">
+{% block menu %}
+<a href="{{ path('jp_librato_home') }}">Accueil</a> | <a href="{{ path('jp_librato_cart') }}">Panier</a> | <a href="{{ path('jp_librato_order') }}">Commande</a>
+{% endblock %}
+</div>
+
+<div id="content">
+{% block content %}
+{% endblock %}
+</div>
+
+</body>
+
+</html>

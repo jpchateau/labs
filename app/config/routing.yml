@@ -1,0 +1,5 @@
+jp_librato:
+    resource: "@JPLibratoBundle/Resources/config/routing.yml"
+    prefix:   /librato
+
+
