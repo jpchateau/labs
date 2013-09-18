@@ -15,14 +15,16 @@ class Curl
         $this->token = $token;
     }
 
-    public function postMetric($name, $value)
+    public function postMetric($name, $value, $source = null)
     {
         $headers = array('Content-Type: application/json');
         $userPwd = $this->user . ':' . $this->token;
+        $gauge = array('name' => $name, 'value'  => $value);
+        if ($source) {
+            $gauge['source'] = $source;
+        }
         $curl_post_data = array(
-            'gauges' => array(
-                array('name' => $name, 'value'  => $value)
-            )
+            'gauges' => array($gauge)
         );
 
         $curl = curl_init();
