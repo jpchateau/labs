@@ -8,6 +8,8 @@ class SiteController extends Controller
 {
     public function homeAction()
     {
+        $curl = $this->get('curl');
+
         return $this->render('JPLibratoBundle:Site:home.html.twig', array());
     }
 
