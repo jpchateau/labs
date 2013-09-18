@@ -30,10 +30,10 @@ class SiteController extends Controller
         return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'curl', 'name' => $name, 'value' => $value));
     }
 
-    public function statsdAction($name, $value)
+    public function statsdAction($name)
     {
-        $curl = $this->get('statsd');
-        $curl->postMetric($name, $value);
-        return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'statsd', 'name' => $name, 'value' => $value));
+        $statsd = $this->get('statsd');
+        $statsd::increment($name);
+        return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'statsd', 'name' => $name, 'value' => 1));
     }
 }
