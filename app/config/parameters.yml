@@ -13,4 +13,6 @@ parameters:
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    curl_endpoint: https://metrics-api.librato.com/v1/metrics
+    librato_endpoint: https://metrics-api.librato.com/v1/metrics
+    librato_user: contact@jpchateau.com
+    librato_token: d5792196b3a31ed77141f4704cf5559c9672fa2926a0af7cdea958c30967e11c

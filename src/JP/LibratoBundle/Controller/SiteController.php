@@ -8,19 +8,23 @@ class SiteController extends Controller
 {
     public function homeAction()
     {
-        $curl = $this->get('curl');
-        $data = $curl->postMetric('home', '1');
-
-        return $this->render('JPLibratoBundle:Site:home.html.twig', array());
+        return $this->render('JPLibratoBundle:Site:home.html.twig');
     }
 
     public function cartAction()
     {
-        return $this->render('JPLibratoBundle:Site:cart.html.twig', array());
+        return $this->render('JPLibratoBundle:Site:cart.html.twig');
     }
 
     public function orderAction()
     {
-        return $this->render('JPLibratoBundle:Site:order.html.twig', array());
+        return $this->render('JPLibratoBundle:Site:order.html.twig');
+    }
+
+    public function postAction($name, $value)
+    {
+        $curl = $this->get('curl');
+        $curl->postMetric($name, $value);
+        return $this->render('JPLibratoBundle:Site:post.html.twig', array('name' => $name, 'value' => $value));
     }
 }

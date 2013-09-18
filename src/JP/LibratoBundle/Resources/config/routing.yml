@@ -9,3 +9,7 @@ jp_librato_cart:
 jp_librato_order:
     pattern:  /site/order
     defaults: { _controller: JPLibratoBundle:Site:order }
+
+jp_librato_post:
+    pattern:  /site/post/{name}/{value}
+    defaults: { _controller: JPLibratoBundle:Site:post }
