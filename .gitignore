@@ -1,0 +1,10 @@
+.settings
+.buildpath
+.project
+.git
+/vendor/*
+/web/bundles/*
+/app/cache/*
+/app/logs/*
+composer.phar
+
