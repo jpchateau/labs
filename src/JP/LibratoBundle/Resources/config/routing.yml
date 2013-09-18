@@ -15,5 +15,5 @@ jp_librato_post:
     defaults: { _controller: JPLibratoBundle:Site:post }
 
 jp_librato_statsd:
-    pattern:  /site/statsd/{name}/{value}
+    pattern:  /site/statsd/{name}
     defaults: { _controller: JPLibratoBundle:Site:statsd }
