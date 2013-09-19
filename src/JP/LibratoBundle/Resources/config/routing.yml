@@ -2,6 +2,10 @@ jp_librato_home:
     pattern:  /site/home
     defaults: { _controller: JPLibratoBundle:Site:home }
 
+jp_librato_homed:
+    pattern:  /site/homed
+    defaults: { _controller: JPLibratoBundle:Site:homed }
+
 jp_librato_cart:
     pattern:  /site/cart
     defaults: { _controller: JPLibratoBundle:Site:cart }
@@ -17,3 +21,7 @@ jp_librato_post:
 jp_librato_statsd:
     pattern:  /site/statsd/{name}
     defaults: { _controller: JPLibratoBundle:Site:statsd }
+
+jp_librato_annotation:
+    pattern:  /site/annotation/{title}
+    defaults: { _controller: JPLibratoBundle:Site:annotation }

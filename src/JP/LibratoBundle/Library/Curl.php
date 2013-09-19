@@ -29,7 +29,7 @@ class Curl
 
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, $this->endpoint);
+        curl_setopt($curl, CURLOPT_URL, $this->endpoint . '/metrics');
         curl_setopt($curl, CURLOPT_USERPWD, $userPwd);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -37,6 +37,27 @@ class Curl
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
 
         curl_exec($curl);
+        curl_close($curl);
+    }
+
+    public function postAnnotation($title)
+    {
+        $headers = array('Content-Type: application/json');
+        $userPwd = $this->user . ':' . $this->token;
+        $annotation = array('title' => $title);
+        $curl_post_data = array($annotation);
+
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_URL, $this->endpoint . '/annotations');
+        curl_setopt($curl, CURLOPT_USERPWD, $userPwd);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
+
+        $data = curl_exec($curl);
+        die(var_dump($data));
         curl_close($curl);
     }
 
