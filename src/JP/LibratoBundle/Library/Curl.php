@@ -42,7 +42,7 @@ class Curl
 
     public function postAnnotation($name)
     {
-        $headers = array('Content-Type: application/json');
+        //$headers = array('Content-Type: application/json');
         $userPwd = $this->user . ':' . $this->token;
         $annotation = array('title' => 'deploy');
         $curl_post_data = array($annotation);
@@ -51,10 +51,11 @@ class Curl
 
         curl_setopt($curl, CURLOPT_URL, $this->endpoint . '/annotations/' . $name);
         curl_setopt($curl, CURLOPT_USERPWD, $userPwd);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        //curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
+        //curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($curl_post_data));
 
         $data = curl_exec($curl);
         die(var_dump($data));
