@@ -48,10 +48,10 @@ class SiteController extends Controller
         return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'statsd', 'name' => $name, 'value' => 1));
     }
 
-    public function annotationAction($title)
+    public function annotationAction($name)
     {
         $curl = $this->get('curl');
-        $curl->postAnnotation($title);
-        return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'curl', 'name' => $title, 'value' => 'annotation'));
+        $curl->postAnnotation($name);
+        return $this->render('JPLibratoBundle:Site:post.html.twig', array('type' => 'curl', 'name' => $name, 'value' => 'annotation'));
     }
 }

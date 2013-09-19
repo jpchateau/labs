@@ -40,16 +40,16 @@ class Curl
         curl_close($curl);
     }
 
-    public function postAnnotation($title)
+    public function postAnnotation($name)
     {
         $headers = array('Content-Type: application/json');
         $userPwd = $this->user . ':' . $this->token;
-        $annotation = array('title' => $title);
+        $annotation = array('title' => 'deploy');
         $curl_post_data = array($annotation);
 
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, $this->endpoint . '/annotations');
+        curl_setopt($curl, CURLOPT_URL, $this->endpoint . '/annotations/' . $name);
         curl_setopt($curl, CURLOPT_USERPWD, $userPwd);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

@@ -23,5 +23,5 @@ jp_librato_statsd:
     defaults: { _controller: JPLibratoBundle:Site:statsd }
 
 jp_librato_annotation:
-    pattern:  /site/annotation/{title}
+    pattern:  /site/annotation/{name}
     defaults: { _controller: JPLibratoBundle:Site:annotation }
