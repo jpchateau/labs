@@ -16,7 +16,7 @@ class SiteController extends Controller
     public function homedAction()
     {
         $statsd = $this->get('statsd');
-        $statsd::increment('home');
+        $statsd::increment('homed');
         return $this->render('JPLibratoBundle:Site:home.html.twig');
     }
 

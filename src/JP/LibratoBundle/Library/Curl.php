@@ -57,8 +57,8 @@ class Curl
         //curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($curl_post_data));
 
-        $data = curl_exec($curl);
-        die(var_dump($data));
+        curl_exec($curl);
+
         curl_close($curl);
     }
 
