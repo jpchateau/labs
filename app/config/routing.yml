@@ -1,5 +1,7 @@
+jp_ember_js:
+    resource: "@JPEmberJSBundle/Resources/config/routing.yml"
+    prefix:   /gta
+
 jp_librato:
     resource: "@JPLibratoBundle/Resources/config/routing.yml"
     prefix:   /librato
-
-

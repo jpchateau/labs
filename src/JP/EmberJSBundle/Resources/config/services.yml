@@ -1,0 +1,7 @@
+parameters:
+#    jp_ember_js.example.class: JP\EmberJSBundle\Example
+
+services:
+#    jp_ember_js.example:
+#        class: %jp_ember_js.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
