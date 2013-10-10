@@ -4,12 +4,13 @@ namespace JP\EmberJSBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JP\EmberJSBundle\Extension\JsonResponse;
+//use Symfony\Component\HttpFoundation\Response;
 
 class GTAController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('JPEmberJSBundle:GTA:index.html.twig');
+        return $this->render('JPEmberJSBundle:GTA:index.html.php');
     }
 
     public function gamesAction()

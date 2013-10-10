@@ -115,7 +115,7 @@ header {
 }
 
 #games {
-	
+
 }
 
 #games ul, #radios ul {
@@ -128,11 +128,11 @@ header {
 }
 
 #radios {
-	
+
 }
 
 #radio_data {
-	
+
 }
 
 img {
@@ -144,7 +144,17 @@ img {
 	border: 2px solid #105CB6;
 }
 
+.nav ul {
+    list-style-type: none;
+}
+.nav li {
+    display: inline-block;
+}
 
+.navigation {
+    width: 100%;
+    background-color: #cdcdcd;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

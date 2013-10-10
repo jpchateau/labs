@@ -1,9 +1,12 @@
 var displayRadios = function(data) {
 	var html = '';
 	html = '<ul>';
-	for (i in data) {
+	data = JSON.parse(data);
+    var radios = data.data;
+    var i;
+	for (i in radios) {
 		var liElement = '';
-		liElement = '<li class="radio" data-slug="' + data[i].slug + '"><img src="/img/radios/' + data[i].image + '" alt="' + data[i].slug + '" /></li>';
+		liElement = '<li class="radio" data-slug="' + radios[i].slug + '"><img src="/bundles/jpemberjs/images/radios/' + radios[i].image + '" alt="' + radios[i].slug + '" /></li>';
 		html += liElement;
 	}
 	html += '</ul>';
@@ -12,7 +15,7 @@ var displayRadios = function(data) {
 
 var getRadiosFromGame = function(game) {
 	$.ajax({
-        url: '/radios.php?game=' + game,
+        url: '/gta/game/' + game,
         type: 'GET'
     }).done(function(data){
     	displayRadios(data);
@@ -41,9 +44,12 @@ var bindGameActions = function() {
 var displayGames = function(data) {
 	var html = '';
 	html = '<ul>';
-	for (i in data) {
+	data = JSON.parse(data);
+	var games = data.data;
+	var i;
+	for (i in games) {
 		var liElement = '';
-		liElement = '<li class="game" data-slug="' + data[i].slug + '"><img src="/img/' + data[i].image + '" alt="' + data[i].slug + '" /></li>';
+		liElement = '<li class="game" data-slug="' + games[i].slug + '"><img src="/bundles/jpemberjs/images/games/' + games[i].image + '" alt="' + games[i].slug + '" /></li>';
 		html += liElement;
 	}
 	html += '</ul>';
@@ -54,7 +60,7 @@ var displayGames = function(data) {
 
 $(document).ready(function(){
 	$.ajax({
-        url: '/games.php',
+        url: '/gta/games',
         type: 'GET'
     }).done(function(data){
     	displayGames(data);
