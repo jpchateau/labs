@@ -1,3 +1,11 @@
-jp_ember_js_homepage:
+jp_ember_js_home:
     pattern:  /home
     defaults: { _controller: JPEmberJSBundle:GTA:index }
+
+jp_ember_js_games_list:
+    pattern:  /games
+    defaults: { _controller: JPEmberJSBundle:GTA:games }
+
+jp_ember_js_game:
+    pattern:  /game/{slug}
+    defaults: { _controller: JPEmberJSBundle:GTA:game }
