@@ -31,8 +31,8 @@ class GTAController extends Controller
         $radios = array();
         switch ($slug) {
             case 'gta3':
-                array_push($radios, array('slug' => 'flashback-fm', 'image' => '250px-Flashback_95.6_(logo).svg.png', 'name' => 'Flashback FM', 'category' => '', 'duration' => '18.25'));
-                array_push($radios, array('slug' => 'lips106', 'image' => '180px-Lips_106.jpg', 'name' => 'Lips 106', 'category' => '', 'duration' => ''));
+                array_push($radios, array('slug' => 'flashback-fm', 'image' => '250px-Flashback_95.6_(logo).svg.png', 'name' => 'Flashback FM', 'category' => '', 'duration' => '18.25', 'track' => 'flashback-fm.mp3'));
+                array_push($radios, array('slug' => 'lips106', 'image' => '180px-Lips_106.jpg', 'name' => 'Lips 106', 'category' => '', 'duration' => '', 'track' => 'lips106.mp3'));
                 break;
             case 'gta4':
 

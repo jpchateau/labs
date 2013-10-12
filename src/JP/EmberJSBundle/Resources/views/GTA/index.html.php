@@ -18,7 +18,7 @@
         	<h1>GTA Music Radio</h1>
         </header>
 
-        <script type="text/x-handlebars">
+        <script type="text/x-handlebars" data-template-name="application">
         <div class="navigation">
           <ul class="nav">
             <li>{{#link-to 'player'}}Player{{/link-to}}</li>
@@ -34,6 +34,7 @@
 		<script type="text/x-handlebars" id="config">
         <div class="config">
         <p>Paramètres du player</p>
+        Loop
         </div>
         </script>
 
@@ -48,22 +49,16 @@
 
         	<div id="radio_data">
         		<p>Veuillez sélectionner une radio</p>
-        		<audio controls>
-	        	<source src="/bundles/jpemberjs/audio/flashback-fm.mp3" type="audio/mpeg">
-				Your browser does not support the audio element.
-			</audio>
         	</div>
         </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/bundles/jpemberjs/js/vendor/jquery-1.10.2.min.js"><\/script>');</script>
-
         <script src="/bundles/jpemberjs/js/vendor/handlebars.js"></script>
         <script src="/bundles/jpemberjs/js/vendor/ember.js"></script>
-
+        <script src="/bundles/jpemberjs/js/init.js"></script>
+        <script src="/bundles/jpemberjs/js/player.js"></script>
         <script src="/bundles/jpemberjs/js/app.js"></script>
-
-        <!-- <script src="{{ asset('bundles/jpemberjs/js/main.js') }}"></script>-->
 
     </body>
 </html>

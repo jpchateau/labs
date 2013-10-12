@@ -97,6 +97,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body {
+    cursor: default;
+}
+
 header {
 	width: 100%;
 	background-color: #000;
@@ -105,6 +109,7 @@ header {
 	text-align: center;
 	padding-top: 1px;
 	padding-bottom: 5px;
+	height: 100px;
 }
 
 #content {
@@ -144,17 +149,45 @@ img {
 	border: 2px solid #105CB6;
 }
 
+.radio_selected {
+    border: 2px solid #105CB6;
+}
+
 .nav ul {
     list-style-type: none;
+    height: 40px;
 }
 .nav li {
     display: inline-block;
+    height: 35px;
+    width: 100px;
+    padding-top: 5px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.nav li:hover {
+    background-color: #000;
+}
+
+.nav li:hover a {
+    color: #fff;
 }
 
 .navigation {
     width: 100%;
     background-color: #cdcdcd;
+    height: 40px;
+    position: relative;
+    top: -55px;
 }
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
