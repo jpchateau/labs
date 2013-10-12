@@ -1,8 +1,10 @@
+'use strict';
+
 App.Player = Ember.Object.extend({
 
     createAudioElement: function (source) {
-        var audioElement = document.createElement('audio');
-        var sourceElement = document.createElement('source');
+        var audioElement = document.createElement('audio'),
+            sourceElement = document.createElement('source');
         sourceElement.src = '/bundles/jpemberjs/audio/' + source;
         sourceElement.type = 'audio/mpeg';
         audioElement.appendChild(sourceElement);
@@ -17,9 +19,9 @@ App.Player = Ember.Object.extend({
         var $audioPlayer = $('audio');
         $audioPlayer.trigger('load');
         $audioPlayer.trigger('play');
-        $radioData.append('<button id="stop">Stop</button>');
-        $radioData.append('<button id="pause">Pause</button>');
-        $radioData.append('<button id="play">Play</button>');
+        $('#play').click(function () {
+            $audioPlayer.trigger('play');
+        });
         $('#stop').click(function () {
             $audioPlayer.trigger('pause');
             $audioPlayer.prop("currentTime", 0);
@@ -27,10 +29,24 @@ App.Player = Ember.Object.extend({
         $('#pause').click(function () {
             $audioPlayer.trigger('pause');
         });
-        $('#play').click(function () {
-            $audioPlayer.trigger('play');
+        $('#volume-up').click(function () {
+            var volume = $audioPlayer.prop("volume");
+            if (volume < 1) {
+                volume = volume + 0.1;
+            }
+            $audioPlayer.prop("volume", volume);
+            $('#player-volume').html(volume);
         });
-        $radioData.append('<p>Now playing ' + liElement.attr('data-name') + '</p>');
+        $('#volume-down').click(function () {
+            var volume = $audioPlayer.prop("volume");
+            if (volume > 0) {
+                volume = volume - 0.1;
+            }
+            $audioPlayer.prop("volume", volume);
+            $('#player-volume').html(volume);
+        });
+        $('#radio-name').html(liElement.attr('data-name') + ' (' + liElement.attr('data-category') + ')');
+        $('#radio-duration').html(liElement.attr('data-duration'));
     },
 
     bindRadioActions: function () {
@@ -41,26 +57,33 @@ App.Player = Ember.Object.extend({
                     $(this).removeClass('radio_selected');
                 }
             });
+            $('#radio-name').empty();
+            $('#radio-duration').empty();
             Player.radioAction($(this));
         });
     },
 
     displayRadios: function (data) {
-        var html = '';
-        html = '<ul>';
-        var data = JSON.parse(data);
+        var html = '',
+            data = JSON.parse(data);
         var radios = data.data;
-        var i;
-        var liElement = '';
-        for (i in radios) {
-            if (radios.hasOwnProperty(i)) {
-            liElement = '<li class="radio" data-slug="' + radios[i].slug + '" data-name="' + radios[i].name + '" data-track="' + radios[i].track + '"><img src="/bundles/jpemberjs/images/radios/' + radios[i].image + '" alt="' + radios[i].slug + '" /></li>';
-            html += liElement;
+        if (radios.length >= 1) {
+            html = '<ul>';
+            var i, liElement = '';
+            for (i in radios) {
+                if (radios.hasOwnProperty(i)) {
+                    liElement = '<li class="radio" data-category="' + radios[i].category + '" data-slug="' + radios[i].slug + '" data-name="' + radios[i].name + '" data-track="' + radios[i].track + '" data-duration="' + radios[i].duration + '"><img src="/bundles/jpemberjs/images/radios/' + radios[i].image + '" alt="' + radios[i].slug + '" /></li>';
+                    html += liElement;
+                }
             }
+            html += '</ul>';
+        } else {
+            html = '<p>Pas de radio disponible</p>';
         }
-        html += '</ul>';
         $('#radios').html(html);
-        Player.bindRadioActions();
+        if (radios.length >= 1) {
+            Player.bindRadioActions();
+        }
     },
 
     getRadiosFromGame: function (game) {
@@ -78,7 +101,7 @@ App.Player = Ember.Object.extend({
     },
 
     bindGameActions: function () {
-        $games = $('.game');
+        var $games = $('.game');
         $games.on('click', function () {
             $games.each(function () {
                 if ($(this).hasClass('game_selected')) {
@@ -91,12 +114,11 @@ App.Player = Ember.Object.extend({
     },
 
     displayGames: function (data) {
-        var html = '';
-        html = '<ul>';
-        var data = JSON.parse(data);
-        var games = data.data;
-        var i;
-        var liElement = '';
+        var html = '<ul>',
+            data = JSON.parse(data);
+        var games = data.data,
+            i,
+            liElement = '';
         for (i in games) {
             if (games.hasOwnProperty(i)) {
                 liElement = '<li class="game" data-slug="' + games[i].slug + '"><img src="/bundles/jpemberjs/images/games/' + games[i].image + '" alt="' + games[i].slug + '" /></li>';

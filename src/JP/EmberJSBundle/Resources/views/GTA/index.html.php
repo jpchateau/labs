@@ -25,6 +25,16 @@
             <li>{{#link-to 'config'}}Config{{/link-to}}</li>
           </ul>
         </div>
+        <div id="player-data">
+            <span id="radio-name">...</span>
+            <button id="play">Play</button>
+            <button id="stop">Stop</button>
+            <button id="pause">Pause</button>
+            <span id="radio-duration">0:00</span>
+            <button id="volume-up">+</button>
+            <button id="volume-down">-</button>
+            <span id="player-volume"></span>
+        </div>
 
         <div id="content">
           {{outlet}}

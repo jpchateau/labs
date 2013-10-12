@@ -115,12 +115,23 @@ header {
 #content {
 	width: 90%;
 	min-height: 400px;
-	background-color: #F5F5F5;
 	margin: auto;
+	border: 1px solid #000;
+	padding: 20px;
+}
+
+img {
+    border: none;
+    width: 100px;
 }
 
 #games {
-
+    margin: auto;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px;
+}
 }
 
 #games ul, #radios ul {
@@ -129,28 +140,32 @@ header {
 
 #games ul li, #radios ul li {
 	display: inline-block;
-	margin-left: 10px;
+	margin-left: 30px;
+}
+#games ul li:first-child, #radios ul li:first-child {
+    margin-left: 0px;
 }
 
 #radios {
-
 }
 
+#games img {
+    opacity: 0.2;
+    cursor: pointer;
+}
 #radio_data {
 
 }
 
-img {
-	border: none;
-	width: 100px;
+#games img:hover {
+    opacity: 0.4;
 }
-
-.game_selected {
-	border: 2px solid #105CB6;
+#games .game_selected img {
+	opacity: 1.0;
 }
 
 .radio_selected {
-    border: 2px solid #105CB6;
+    border: 2px solid #000;
 }
 
 .nav ul {
@@ -159,9 +174,9 @@ img {
 }
 .nav li {
     display: inline-block;
-    height: 35px;
+    height: 30px;
     width: 100px;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 10px;
     text-transform: uppercase;
     cursor: pointer;
@@ -181,6 +196,21 @@ img {
     height: 40px;
     position: relative;
     top: -55px;
+}
+
+#player-data {
+    width: 100%;
+    background-color: #ddd;
+    height: 30px;
+    padding-top: 10px;
+    position: relative;
+    text-align: left;
+    padding-left: 10px;
+    top: -55px;
+}
+#player-data #radio-name {
+    display: inline-block;
+    width: 300px;
 }
 
 a {
