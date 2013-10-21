@@ -1,3 +1,7 @@
+jp_user:
+    resource: "@JPUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 jp_ember_js:
     resource: "@JPEmberJSBundle/Resources/config/routing.yml"
     prefix:   /gta

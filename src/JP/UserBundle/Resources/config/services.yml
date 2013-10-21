@@ -1,0 +1,7 @@
+parameters:
+#    jp_user.example.class: JP\UserBundle\Example
+
+services:
+#    jp_user.example:
+#        class: %jp_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
