@@ -12,7 +12,9 @@ parameters:
     mailer_password: null
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
-
-    librato_endpoint: https://metrics-api.librato.com/v1
+    librato_endpoint: 'https://metrics-api.librato.com/v1'
     librato_user: contact@jpchateau.com
     librato_token: d5792196b3a31ed77141f4704cf5559c9672fa2926a0af7cdea958c30967e11c
+
+    instagram_client_id: aadf5df4982e4cef99a8a6ce131cb49b
+    instagram_client_secret: 2e35e294b3b64ec89e817a6831104ff7

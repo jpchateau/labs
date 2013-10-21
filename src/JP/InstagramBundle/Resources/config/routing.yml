@@ -1,0 +1,7 @@
+jp_instagram_home:
+    pattern:  /
+    defaults: { _controller: JPInstagramBundle:Home:index }
+
+jp_instagram_user:
+    pattern:  /user
+    defaults: { _controller: JPInstagramBundle:User:feed }

@@ -1,0 +1,7 @@
+parameters:
+#    jp_instagram.example.class: JP\InstagramBundle\Example
+
+services:
+#    jp_instagram.example:
+#        class: %jp_instagram.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
