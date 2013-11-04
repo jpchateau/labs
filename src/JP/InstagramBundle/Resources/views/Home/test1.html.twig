@@ -1,0 +1,28 @@
+Test 1<br /><br />
+<button id="go">Go</button><br /><br />
+
+<div id="result">
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+	$('#go').click(function(){
+		$.ajax({
+			url: "{{ url('test2') }}",
+			success: function(data){
+				var html = '';
+				for(var i = 0; i < data.photos.length; i++ ){
+				    alert(data.photos[i].id);
+				    html += data.photos[i].form;
+				}
+				$('#result').append(html);
+			},
+			dataType: 'json'
+			});
+	});
+
+});
+</script>
