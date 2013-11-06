@@ -19,8 +19,10 @@ class UserController extends Controller
         $accessToken = $session->get('instagram_access_token', null);
         if ($accessToken) {
             $url = $instagramAPIManager->getBaseEndpoint() . 'users/self/feed?access_token=' . $accessToken;
+            
             $data = $this->makeApiCall($url);
             $data = json_decode($data, false);
+            
             $this->processInstagramData($data);
         } else {
             $request = $this->get('request');
@@ -33,9 +35,8 @@ class UserController extends Controller
                 $instagramLink = $instagramAPIManager->buildAuthorizationUrl();
             }
         }
-
-        return $this->render('JPInstagramBundle:User:index.html.twig', array('link' => $instagramLink, 'user' => $instagramUser, 'photos' => self::$photos));
-
+        
+        return $this->render('JPInstagramBundle:User:index.html.twig', array('link' => $instagramLink, 'user' => $session->get('instagram_username'), 'photos' => self::$photos));
     }
 
     private function makeApiCall($url)

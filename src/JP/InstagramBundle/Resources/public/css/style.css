@@ -1,9 +1,11 @@
 .photo {
-    margin-top: 30;
     margin: auto;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 180px;
 }
 
-table, td {
-    collapse: collapse;
+table, td, th {
+    border-collapse: collapse;
     border: 1px solid #000;
 }
