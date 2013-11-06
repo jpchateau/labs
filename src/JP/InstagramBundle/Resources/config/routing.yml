@@ -4,12 +4,8 @@ jp_instagram_home:
 
 jp_instagram_user:
     pattern:  /user
-    defaults: { _controller: JPInstagramBundle:User:feed }
+    defaults: { _controller: JPInstagramBundle:User:index }
 
-test1:
-    pattern:  /test1
-    defaults: { _controller: JPInstagramBundle:Home:test1 }
-
-test2:
-    pattern:  /test2
-    defaults: { _controller: JPInstagramBundle:Home:test2 }
+jp_instagram_tag:
+    pattern:  /tag
+    defaults: { _controller: JPInstagramBundle:Tag:index }

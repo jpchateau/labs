@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class UserController extends Controller
 {
 
-    public function feedAction()
+    public function indexAction()
     {
         $request = $this->get('request');
         $code = $request->query->get('code', null);
@@ -28,6 +28,6 @@ class UserController extends Controller
             curl_close($curl);
             die(var_dump($response));
         }
-        return $this->render('JPInstagramBundle:User:feed.html.twig');
+        return $this->render('JPInstagramBundle:User:index.html.twig');
     }
 }
