@@ -2,6 +2,23 @@
 
 {% block content %}
 
-Tag
+<h2>Photos taggées {{ tag }}</h2>
+
+{% if photos|length %}
+    <table>
+        <tr>
+            <th>Date Tag</th>
+            <th>User</th>
+            <th>Photo</th>
+        </tr>
+        {% for photo in photos %}
+            <tr>
+                <td>{{ photo.instagram_caption_created_time|date('d/m/Y') }}</td>
+                <td>{{ photo.instagram_username }}</td>
+                <td><a href="{{ photo.instagram_link }}"><img src="{{ photo.instagram_image_thumbnail }}" alt="" width="50" height="50" /></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
 
 {% endblock %}

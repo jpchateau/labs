@@ -1,0 +1,9 @@
+.photo {
+    margin-top: 30;
+    margin: auto;
+}
+
+table, td {
+    collapse: collapse;
+    border: 1px solid #000;
+}

@@ -2,9 +2,27 @@
 
 {% block content %}
 
-JP feed
+{% if link %}
 
-<a href="https://api.instagram.com/oauth/authorize/?client_id=aadf5df4982e4cef99a8a6ce131cb49b&redirect_uri=http://labs.local/instagram/user&response_type=code">Login</a>
+    <a href="{{ link }}">Autoriser Appli Instagram</a>
+
+{% else %}
+
+    <h2>Self/Feed {{ user.username }}</h2>
+
+    {% if photos|length %}
+
+        {% for photo in photos %}
+
+            <div class="photo">
+                Créé par {{ photo.instagram_username }}, le {{ photo.instagram_caption_created_time|date('d/m/Y') }}<br />
+                <a href="{{ photo.instagram_link }}"><img src="{{ photo.instagram_image_thumbnail }}" /></a>
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endif %}
 
 {% endblock %}
-

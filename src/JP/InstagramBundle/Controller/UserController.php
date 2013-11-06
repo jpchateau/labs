@@ -6,28 +6,65 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
+    private static $photos = array();
 
     public function indexAction()
     {
-        $request = $this->get('request');
-        $code = $request->query->get('code', null);
-        if ($code) {
-            $parameters = array('client_id' => $this->container->getParameter('instagram_client_id'),
-                                'client_secret' => $this->container->getParameter('instagram_client_secret'),
-                                'grant_type' => 'authorization_code',
-                                'redirect_uri' => 'http://labs.local/instagram/user',
-                                'code' => $code);
-            $url = 'https://api.instagram.com/oauth/access_token?' . http_build_query($parameters);
+        $instagramUser = null;
+        $instagramLink = null;
 
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            $response = curl_exec($curl);
-            curl_close($curl);
-            die(var_dump($response));
+        $session = $this->get('session');
+        $instagramAPIManager = $this->get('instagram_api_manager');
+
+        $accessToken = $session->get('instagram_access_token', null);
+        if ($accessToken) {
+            $url = $instagramAPIManager->getBaseEndpoint() . 'users/self/feed?access_token=' . $accessToken;
+            $data = $this->makeApiCall($url);
+            $data = json_decode($data, false);
+            $this->processInstagramData($data);
+        } else {
+            $request = $this->get('request');
+            $instagramCode = $request->query->get('code', null);
+            if ($instagramCode) {
+                $instagramUser = $instagramAPIManager->getUser($instagramCode);
+                $session->set('instagram_username', $instagramUser['username']);
+                $session->set('instagram_access_token', $instagramUser['access_token']);
+            } else {
+                $instagramLink = $instagramAPIManager->buildAuthorizationUrl();
+            }
         }
-        return $this->render('JPInstagramBundle:User:index.html.twig');
+
+        return $this->render('JPInstagramBundle:User:index.html.twig', array('link' => $instagramLink, 'user' => $instagramUser, 'photos' => self::$photos));
+
     }
+
+    private function makeApiCall($url)
+    {
+        return $this->get('curl_manager')->getUrl($url, true);
+    }
+
+    private function processInstagramData($data)
+    {
+        if ($data->data && count($data->data)) {
+            foreach ($data->data as $instagramPhoto) {
+                if ($instagramPhoto->type !== 'image') {
+                    continue;
+                }
+                $this->prepareImport($instagramPhoto);
+            }
+        }
+    }
+
+    private function prepareImport($instagramPhoto)
+    {
+        $photoToImport = array();
+        $photoToImport['instagram_caption_created_time'] = (isset($instagramPhoto->caption->created_time) ? $instagramPhoto->caption->created_time : null);
+        $photoToImport['instagram_username'] = $instagramPhoto->user->username;
+        $photoToImport['instagram_link'] = $instagramPhoto->link;
+        $photoToImport['instagram_image_standard'] = $instagramPhoto->images->standard_resolution->url;
+        $photoToImport['instagram_image_thumbnail'] = $instagramPhoto->images->thumbnail->url;
+        array_push(self::$photos, $photoToImport);
+        unset($photoToImport);
+    }
+
 }
