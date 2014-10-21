@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: @JPLibratoBundle/Resources/config/config.yml }
     - { resource: @JPEmberJSBundle/Resources/config/config.yml }
+    - { resource: @JPMiscBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~

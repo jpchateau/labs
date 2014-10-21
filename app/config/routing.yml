@@ -13,3 +13,7 @@ jp_librato:
 jp_instagram:
     resource: "@JPInstagramBundle/Resources/config/routing.yml"
     prefix:   /instagram
+
+jp_misc:
+    resource: "@JPMiscBundle/Resources/config/routing.yml"
+    prefix:   /misc

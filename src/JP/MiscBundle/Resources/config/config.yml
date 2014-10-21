@@ -1,0 +1,4 @@
+twig:
+    form:
+        resources:
+            - 'JPMiscBundle:Form:fields.html.twig'

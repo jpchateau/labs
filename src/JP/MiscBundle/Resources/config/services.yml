@@ -1,0 +1,5 @@
+services:
+    form.type.iban:
+        class: JP\MiscBundle\Form\Type\IbanType
+        tags:
+            - { name: form.type, alias: iban }

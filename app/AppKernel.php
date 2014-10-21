@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new JP\EmberJSBundle\JPEmberJSBundle(),
             new JP\UserBundle\JPUserBundle(),
             new JP\InstagramBundle\JPInstagramBundle(),
+            new JP\MiscBundle\JPMiscBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
