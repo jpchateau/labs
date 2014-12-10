@@ -23,16 +23,11 @@ class ImageConverter
      * @param string $file
      * @param array  $options
      */
-    public function initialize($file, array $options = array())
+    public function initialize($file = '', array $options = array())
     {
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
-    }
-
-    public function encode()
-    {
-        // Apply modifications to the file
     }
 
     /**
