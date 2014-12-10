@@ -1,0 +1,3 @@
+services:
+    image_converter:
+        class: JP\OptionsResolverBundle\Converter\ImageConverter

@@ -1,0 +1,11 @@
+{% extends 'JPOptionsResolverBundle::base.html.twig' %}
+
+{% block content %}
+
+Encoding options:<br /><br />
+
+{% for key, value in options %}
+{{ key ~': ' ~ value }}<br />
+{% endfor %}
+
+{% endblock %}

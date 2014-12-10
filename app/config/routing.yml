@@ -17,3 +17,7 @@ jp_instagram:
 jp_misc:
     resource: "@JPMiscBundle/Resources/config/routing.yml"
     prefix:   /misc
+
+jp_options_resolver:
+    resource: "@JPOptionsResolverBundle/Resources/config/routing.yml"
+    prefix:   /resolver
