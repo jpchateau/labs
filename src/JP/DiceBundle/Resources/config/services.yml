@@ -1,0 +1,3 @@
+services:
+    dice_d6:
+        class: JP\DiceBundle\Dice\DiceSix

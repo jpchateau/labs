@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new JP\InstagramBundle\JPInstagramBundle(),
             new JP\MiscBundle\JPMiscBundle(),
             new JP\OptionsResolverBundle\JPOptionsResolverBundle(),
+            new JP\DiceBundle\JPDiceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
