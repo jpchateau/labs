@@ -1,0 +1,5 @@
+services:
+form.type.iban:
+class: Tms\Bundle\FormGeneratorBundle\Form\Type\IbanType
+tags:
+- { name: form.type, alias: iban }

@@ -1,0 +1,4 @@
+twig:
+form:
+resources:
+- 'TmsFormGeneratorBundle:Form:fields.html.twig'
