@@ -2,7 +2,7 @@
 
 namespace JP\DiceBundle\Dice;
 
-class DiceSix implements DiceInterface
+class DiceThree implements DiceInterface
 {
     private $result;
 
@@ -16,7 +16,7 @@ class DiceSix implements DiceInterface
 
     public function roll()
     {
-        $this->result = round(rand(1, 6), 0);
+        $this->result = round(rand(1, 3), 0);
 
         return $this;
     }

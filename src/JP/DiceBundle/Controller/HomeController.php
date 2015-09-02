@@ -13,10 +13,15 @@ class HomeController extends Controller
     public function indexAction()
     {
         $d6 = $this->get('dice_d6');
-        $d6->roll();
+        $d3 = $this->get('dice_d3');
+
+        $results = array(
+            'd6' => $d6->roll()->getResult(),
+            'd3' => $d3->roll()->getResult(),
+        );
 
         return array(
-            'result' => $d6->getResult()
+            'results' => $results,
         );
     }
 }

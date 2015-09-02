@@ -1,3 +1,5 @@
 services:
     dice_d6:
         class: JP\DiceBundle\Dice\DiceSix
+    dice_d3:
+        class: JP\DiceBundle\Dice\DiceThree
