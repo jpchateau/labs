@@ -1,29 +1,24 @@
 # This file is auto-generated during the composer install
 parameters:
-
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: null
     database_name: symfony
     database_user: root
     database_password: null
-
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
-
     librato_endpoint: 'https://metrics-api.librato.com/v1'
     librato_user: contact@jpchateau.com
     librato_token: d5792196b3a31ed77141f4704cf5559c9672fa2926a0af7cdea958c30967e11c
-
-    instagram_base_endpoint:     https://api.instagram.com/v1/
-    instagram_access_token_url:  https://api.instagram.com/oauth/access_token
-    instagram_authorization_url: https://api.instagram.com/oauth/authorize/
-    instagram_redirect_uri:      http://labs.local/instagram/user
-    instagram_client_id:         aadf5df4982e4cef99a8a6ce131cb49b
-    instagram_client_secret:     2e35e294b3b64ec89e817a6831104ff7
-    instagram_tag:               Paris
+    instagram_client_id: aadf5df4982e4cef99a8a6ce131cb49b
+    instagram_client_secret: 2e35e294b3b64ec89e817a6831104ff7
+    instagram_base_endpoint:
+    instagram_tag:
+    instagram_redirect_uri:
+    instagram_access_token_url:
+    instagram_authorization_url:

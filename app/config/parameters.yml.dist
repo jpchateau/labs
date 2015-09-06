@@ -20,3 +20,8 @@ parameters:
 
     instagram_client_id: aadf5df4982e4cef99a8a6ce131cb49b
     instagram_client_secret: 2e35e294b3b64ec89e817a6831104ff7
+    instagram_base_endpoint:
+    instagram_tag:
+    instagram_redirect_uri:
+    instagram_access_token_url:
+    instagram_authorization_url:

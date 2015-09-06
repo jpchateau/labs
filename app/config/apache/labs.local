@@ -2,4 +2,10 @@
     DocumentRoot "/var/www/labs/web"
     ServerName labs.local
     ServerAdmin jpm.webmaster@gmail.com
+
+    <Directory /var/www/labs/web>
+        AllowOverride All
+        Order Allow,Deny
+        Allow from All
+    </Directory>
 </VirtualHost>
