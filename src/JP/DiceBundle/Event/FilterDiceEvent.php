@@ -6,26 +6,26 @@ use Symfony\Component\EventDispatcher\Event;
 use JP\DiceBundle\Dice\Dice;
 
 /**
- * Class FilterDiceEvent
+ * Class FilterDiceEvent.
  */
 class FilterDiceEvent extends Event
 {
     /** @var Dice */
-    protected $die;
+    protected $dice;
 
     /**
      * @param Dice $die
      */
-    public function __construct(Dice $die)
+    public function __construct(Dice $dice)
     {
-        $this->die = $die;
+        $this->dice = $dice;
     }
 
     /**
      * @return Dice
      */
-    public function getDie()
+    public function getDice()
     {
-        return $this->die;
+        return $this->dice;
     }
 }

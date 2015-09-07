@@ -3,7 +3,7 @@
 namespace JP\DiceBundle\Event;
 
 /**
- * Class DiceEvents
+ * Class DiceEvents.
  */
 final class DiceEvents
 {

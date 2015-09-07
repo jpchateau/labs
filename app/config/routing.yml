@@ -22,6 +22,6 @@ jp_options_resolver:
     resource: "@JPOptionsResolverBundle/Resources/config/routing.yml"
     prefix:   /resolver
 
-jp_dice:
+jpc_dice:
     resource: "@JPDiceBundle/Resources/config/routing.yml"
     prefix:   /dice

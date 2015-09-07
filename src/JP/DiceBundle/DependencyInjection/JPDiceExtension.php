@@ -7,7 +7,9 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-
+/**
+ * Class JPDiceExtension.
+ */
 class JPDiceExtension extends Extension
 {
     /**
@@ -22,8 +24,16 @@ class JPDiceExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter(
-            'jp_dice',
+            'jpc_dice',
             $config
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNamespace()
+    {
+        return 'jpc_dice';
     }
 }

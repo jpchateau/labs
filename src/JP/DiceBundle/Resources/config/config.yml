@@ -1,5 +1,5 @@
-jp_dice:
-    dice:
+jpc_dice:
+    dices:
         d6:
             faces: 6
         d10:

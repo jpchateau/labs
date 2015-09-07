@@ -1,10 +1,10 @@
 services:
-    jp.die:
+    jpc.dice:
         class: JP\DiceBundle\Dice\Dice
         abstract: true
         public : false
 
-    jp.die.manager:
+    jpc.dice.manager:
         class: JP\DiceBundle\Manager\DiceManager
         abstract: true;
-        arguments: [null, @event_dispatcher]
+        arguments: [null]

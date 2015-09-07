@@ -5,11 +5,18 @@ namespace JP\DiceBundle\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use JP\DiceBundle\Dice\Dice;
 
+/**
+ * Class DiceSubscriber.
+ */
 class DiceSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @return array
+     */
     static public function getSubscribedEvents()
     {
         return array(
+            DiceEvents::PRE_ROLL => array('onPreRoll', 0),
             DiceEvents::POST_ROLL => array('onPostRoll', 0),
         );
     }
@@ -17,22 +24,30 @@ class DiceSubscriber implements EventSubscriberInterface
     /**
      * @param FilterDiceEvent $event
      */
-    public function onPostRoll(FilterDiceEvent $event)
+    public function onPreRoll(FilterDiceEvent $event)
     {
-        $die = $event->getDie();
-
-        $this->cheat($die);
+        return;
     }
 
     /**
-     * @param Dice $die
+     * @param FilterDiceEvent $event
      */
-    private function cheat(Dice $die)
+    public function onPostRoll(FilterDiceEvent $event)
     {
-        if (!$die->getLoad()) {
+        $dice = $event->getDice();
+
+        $this->enterCheatMode($dice);
+    }
+
+    /**
+     * @param Dice $dice
+     */
+    private function enterCheatMode(Dice $dice)
+    {
+        if (!$dice->getLoad()) {
             return;
         }
 
-        $die->cheat();
+        $dice->cheat();
     }
 }

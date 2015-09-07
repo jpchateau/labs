@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 
 /**
- * Class DiceCompilerPass
+ * Class DiceCompilerPass.
  */
 class DiceCompilerPass implements CompilerPassInterface
 {
@@ -17,19 +17,19 @@ class DiceCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('jp.die')) {
+        if (!$container->hasDefinition('jpc.dice')) {
             return;
         }
 
-        if (!$container->hasDefinition('jp.die.manager')) {
+        if (!$container->hasDefinition('jpc.dice.manager')) {
             return;
         }
 
-        $config = $container->getParameter('jp_dice');
+        $config = $container->getParameter('jpc_dice');
 
-        foreach ($config['dice'] as $name => $parameters) {
-            $serviceDefinition = new DefinitionDecorator('jp.die');
-            $serviceDefinitionName = sprintf('jp.die.%s', $name);
+        foreach ($config['dices'] as $name => $parameters) {
+            $serviceDefinition = new DefinitionDecorator('jpc.dice');
+            $serviceDefinitionName = sprintf('jpc.dice.%s', $name);
 
             $serviceDefinition->isAbstract(false);
             $serviceDefinition->addMethodCall('setFaces', array($parameters['faces']));
@@ -39,10 +39,11 @@ class DiceCompilerPass implements CompilerPassInterface
 
             $container->setDefinition($serviceDefinitionName, $serviceDefinition);
 
-            $managerServiceDefinition = new DefinitionDecorator('jp.die.manager');
+            $managerServiceDefinition = new DefinitionDecorator('jpc.dice.manager');
             $managerServiceDefinition->isAbstract(false);
-            $managerServiceDefinitionName = sprintf('die_%s', $name);
+            $managerServiceDefinitionName = sprintf('dice_%s', $name);
             $managerServiceDefinition->replaceArgument(0, new Reference($serviceDefinitionName));
+
             $container->setDefinition($managerServiceDefinitionName, $managerServiceDefinition);
         }
     }

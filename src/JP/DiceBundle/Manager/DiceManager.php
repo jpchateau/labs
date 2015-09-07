@@ -7,38 +7,47 @@ use JP\DiceBundle\Event;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
- * Class DiceManager
+ * Class DiceManager.
  */
 class DiceManager
 {
     /** @var Dice */
-    private $die;
+    private $dice;
 
     /** @var EventDispatcher */
     private $dispatcher;
 
+    /** @var int */
+    private $result;
+
     /**
-     * @param Dice $die
+     * @param Dice $dice
      */
-    public function __construct(Dice $die)
+    public function __construct(Dice $dice)
     {
-        $this->die = $die;
+        $this->dice = $dice;
         $this->dispatcher = new EventDispatcher();
         $this->dispatcher->addSubscriber(new Event\DiceSubscriber());
     }
 
     /**
-     * @return $this
+     * @param int $throws
+     * @return self
      */
-    public function roll()
+    public function roll($throws = 1)
     {
-        $event = new Event\FilterDiceEvent($this->die);
+        $event = new Event\FilterDiceEvent($this->dice);
+        $this->result = 0;
 
-        $this->dispatcher->dispatch(Event\DiceEvents::PRE_ROLL, $event);
+        for ($i = 1; $i <= $throws; $i++) {
+            $this->dispatcher->dispatch(Event\DiceEvents::PRE_ROLL, $event);
 
-        $this->die->roll();
+            $this->dice->roll();
 
-        $this->dispatcher->dispatch(Event\DiceEvents::POST_ROLL, $event);
+            $this->dispatcher->dispatch(Event\DiceEvents::POST_ROLL, $event);
+
+            $this->result += $this->dice->getResult();
+        }
 
         return $this;
     }
@@ -48,6 +57,6 @@ class DiceManager
      */
     public function getResult()
     {
-        return $this->die->getResult();
+        return $this->result;
     }
 }

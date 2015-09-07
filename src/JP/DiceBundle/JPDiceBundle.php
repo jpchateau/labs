@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use JP\DiceBundle\DependencyInjection\Compiler\DiceCompilerPass;
 
 /**
- * Class JPDiceBundle
+ * Class JPDiceBundle.
  */
 class JPDiceBundle extends Bundle
 {

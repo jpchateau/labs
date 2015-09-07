@@ -5,6 +5,9 @@ namespace JP\DiceBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * Class Configuration.
+ */
 class Configuration implements ConfigurationInterface
 {
     /**
@@ -13,11 +16,11 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('jp_dice');
+        $rootNode = $treeBuilder->root('jpc_dice');
 
         $rootNode
             ->children()
-                ->arrayNode('dice')
+                ->arrayNode('dices')
                     ->prototype('array')
                         ->children()
                             ->scalarNode('faces')

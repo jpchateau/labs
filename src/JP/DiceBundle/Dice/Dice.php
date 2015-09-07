@@ -3,18 +3,24 @@
 namespace JP\DiceBundle\Dice;
 
 /**
- * Class Dice
+ * Class Dice.
  */
 class Dice
 {
-    const LUCK = 75;
+    /** var int */
+    const LUCK = 51;
 
+    /** @var int */
     private $faces;
+
+    /** @var int */
     private $result;
+
+    /** @var int */
     private $load;
 
     /**
-     * @return integer
+     * @return int
      */
     public function getResult()
     {
@@ -22,7 +28,7 @@ class Dice
     }
 
     /**
-     * @param integer $result
+     * @param int $result
      * @return self
      */
     public function setResult($result)
@@ -33,7 +39,7 @@ class Dice
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getFaces()
     {
@@ -41,7 +47,7 @@ class Dice
     }
 
     /**
-     * @param integer $faces
+     * @param int $faces
      * @return self
      */
     public function setFaces($faces)
@@ -52,7 +58,7 @@ class Dice
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getLoad()
     {
@@ -60,7 +66,7 @@ class Dice
     }
 
     /**
-     * @param integer $load
+     * @param int $load
      * @return self
      */
     public function setLoad($load)

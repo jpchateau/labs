@@ -5,6 +5,9 @@ namespace JP\DiceBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class HomeController.
+ */
 class HomeController extends Controller
 {
     /**
@@ -12,18 +15,19 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        $d6 = $this->get('die_d6');
-        $d10 = $this->get('die_d10');
-        $cheat = $this->get('die_cheat');
+        $d6 = $this->get('dice_d6');
+        $d10 = $this->get('dice_d10');
+        $cheat = $this->get('dice_cheat');
 
-        $results = array(
-            'd6' => $d6->roll()->getResult(),
-            'd10' => $d10->roll()->getResult(),
+        $results = [
+            'd6'    => $d6->roll()->getResult(),
+            '2d6'   => $d6->roll(2)->getResult(),
+            'd10'   => $d10->roll()->getResult(),
             'cheat' => $cheat->roll()->getResult(),
-        );
+        ];
 
-        return array(
+        return [
             'results' => $results,
-        );
+        ];
     }
 }

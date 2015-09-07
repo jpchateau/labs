@@ -35,12 +35,12 @@ class DiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testRoll($data, $expectedResults)
     {
-        $die = new Dice();
-        $die->setFaces($data['faces']);
+        $dice = new Dice();
+        $dice->setFaces($data['faces']);
 
-        for ($i = 1; $i <= 50; $i++) {
-            $die->roll();
-            $this->assertTrue(in_array($die->getResult(), $expectedResults));
+        for ($i = 1; $i <= 30; $i++) {
+            $dice->roll();
+            $this->assertTrue(in_array($dice->getResult(), $expectedResults));
         }
     }
 }
