@@ -22,6 +22,17 @@ class Dice
     }
 
     /**
+     * @param integer $result
+     * @return self
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
      * @return integer
      */
     public function getFaces()
@@ -68,16 +79,11 @@ class Dice
 
     public function cheat()
     {
-        if (!$this->load) {
-            return $this;
-        }
         $random = rand(1, 100);
         if ($random > self::LUCK) {
-            return $this;
+            return;
         }
 
         $this->result = $this->load;
-
-        return $this;
     }
 }

@@ -2,6 +2,8 @@ jp_dice:
     dice:
         d6:
             faces: 6
-            load: 3
         d10:
             faces: 10
+        cheat:
+            faces: 6
+            load: 6

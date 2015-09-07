@@ -2,3 +2,9 @@ services:
     jp.die:
         class: JP\DiceBundle\Dice\Dice
         abstract: true
+        public : false
+
+    jp.die.manager:
+        class: JP\DiceBundle\Manager\DiceManager
+        abstract: true;
+        arguments: [null, @event_dispatcher]

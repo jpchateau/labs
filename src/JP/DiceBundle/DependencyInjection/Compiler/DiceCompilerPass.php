@@ -21,6 +21,10 @@ class DiceCompilerPass implements CompilerPassInterface
             return;
         }
 
+        if (!$container->hasDefinition('jp.die.manager')) {
+            return;
+        }
+
         $config = $container->getParameter('jp_dice');
 
         foreach ($config['dice'] as $name => $parameters) {
@@ -34,6 +38,12 @@ class DiceCompilerPass implements CompilerPassInterface
             }
 
             $container->setDefinition($serviceDefinitionName, $serviceDefinition);
+
+            $managerServiceDefinition = new DefinitionDecorator('jp.die.manager');
+            $managerServiceDefinition->isAbstract(false);
+            $managerServiceDefinitionName = sprintf('die_%s', $name);
+            $managerServiceDefinition->replaceArgument(0, new Reference($serviceDefinitionName));
+            $container->setDefinition($managerServiceDefinitionName, $managerServiceDefinition);
         }
     }
 }
