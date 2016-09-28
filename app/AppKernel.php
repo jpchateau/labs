@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new JP\MiscBundle\JPMiscBundle(),
             new JP\OptionsResolverBundle\JPOptionsResolverBundle(),
             new JP\DiceBundle\JPDiceBundle(),
+            new \Aws\Symfony\AwsBundle(),
+            new JP\AwsBundle\JPAwsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

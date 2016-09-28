@@ -1,3 +1,7 @@
+jp_aws:
+    resource: "@JPAwsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 jp_user:
     resource: "@JPUserBundle/Resources/config/routing.yml"
     prefix:   /user

@@ -1,0 +1,3 @@
+jp_aws_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: JPAwsBundle:Default:index }
