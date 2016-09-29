@@ -65,6 +65,6 @@ aws:
     version: latest
     region: eu-west-1
     credentials:
-        key: AKIAIIJWCSEWKNQXMWRA
-        secret: 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
+        key: %aws_key%
+        secret: %aws_secret%
 
