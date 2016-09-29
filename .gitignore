@@ -5,4 +5,4 @@
 /app/cache/*
 /app/logs/*
 composer.phar
-
+app/config/parameters.yml
