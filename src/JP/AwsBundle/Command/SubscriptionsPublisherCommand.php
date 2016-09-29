@@ -20,7 +20,7 @@ class SubscriptionsPublisherCommand extends ContainerAwareCommand
         /** @var \AWS\Sqs\SqsClient $awsSqsClient */
         $awsSqsClient = $this->getContainer()->get('aws.sqs');
 
-        $queueUrl = 'https://sqs.eu-west-1.amazonaws.com/535067210092/lacentrale-subscriptions';
+        $queue = $awsSqsClient->getQueueUrl(['QueueName' => 'lacentrale-subscriptions']);
 
         //echo $awsSqsClient->listQueues();
 
@@ -31,13 +31,13 @@ class SubscriptionsPublisherCommand extends ContainerAwareCommand
             ];
             $parameters = [
                 'MessageBody' => json_encode($customer),
-                'QueueUrl' => $queueUrl,
+                'QueueUrl'    => $queue['QueueUrl'],
             ];
 
             $awsSqsClient->sendMessage($parameters);
-            sleep(2);
+            sleep(3);
         }
 
-        $output->writeln('end');
+        $output->writeln('All messages published');
     }
 }
